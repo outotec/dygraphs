@@ -1862,7 +1862,8 @@ Dygraph.prototype.findClosestPoint = function(domX, domY) {
       dx = point.canvasx - domX;
       dy = point.canvasy - domY;
       dist = dx * dx + dy * dy;
-      if (dist < minDist && !isNaN(euclideanDist) && dist < highlightMinDistance) {
+      var euclideanDist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < minDist && !isNaN(euclideanDist) && euclideanDist < highlightMinDistance) {
         minDist = dist;
         closestPoint = point;
         closestSeries = setIdx;
